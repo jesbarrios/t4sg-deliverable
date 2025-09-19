@@ -52,7 +52,7 @@ export default function SpeciesDetailsDialog({
         <div className="mt-4 space-y-4">
           <div>
             <h4 className="font-semibold">Description</h4>
-            <p className="text-muted-foreground">{species.description || "No description available."}</p>
+            <p className="text-muted-foreground">{species.description ?? "No description available."}</p>
           </div>
 
           <Separator />
@@ -65,7 +65,7 @@ export default function SpeciesDetailsDialog({
             <div>
               <h4 className="font-semibold">Population</h4>
               <p className="text-muted-foreground">
-                {species.total_population?.toLocaleString() || "Unknown"}
+                {species.total_population?.toLocaleString() ?? "Unknown"}
               </p>
             </div>
             <div>
@@ -84,7 +84,7 @@ export default function SpeciesDetailsDialog({
             <div>
               <h4 className="font-semibold">Added by</h4>
               <p className="text-muted-foreground">
-                {species.profiles?.display_name || "Unknown"} ({species.profiles?.email})
+                {species.profiles?.display_name ?? "Unknown"} ({species.profiles?.email})
               </p>
             </div>
           </div>

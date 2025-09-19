@@ -27,7 +27,7 @@ export default function UserCard({ profile }: { profile: Profile }) {
       <div className="mt-3">
         <h4 className="text-sm font-medium">Biography</h4>
         <p className="text-muted-foreground">
-          {profile.biography || "None"}
+          {profile.biography ?? "None"}
         </p>
       </div>
     </div>

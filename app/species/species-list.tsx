@@ -22,8 +22,8 @@ export default function SpeciesList({
     const query = searchQuery.toLowerCase();
     return (
       s.scientific_name.toLowerCase().includes(query) ||
-      (s.common_name?.toLowerCase() || "").includes(query) ||
-      (s.description?.toLowerCase() || "").includes(query)
+      (s.common_name?.toLowerCase() ?? "").includes(query) ||
+      (s.description?.toLowerCase() ?? "").includes(query)
     );
   });
 

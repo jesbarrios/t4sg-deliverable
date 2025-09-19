@@ -19,7 +19,7 @@ export default function UserList({
     return (
       p.display_name.toLowerCase().includes(query) ||
       p.email.toLowerCase().includes(query) ||
-      (p.biography?.toLowerCase() || "").includes(query)
+      (p.biography?.toLowerCase() ?? "").includes(query)
     );
   });
 

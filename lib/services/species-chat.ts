@@ -35,7 +35,7 @@ export async function generateResponse(message: string): Promise<string> {
       max_tokens: 500,
     });
 
-    return response.choices[0]?.message?.content || "I'm having trouble thinking about that right now. Please try again.";
+    return response.choices[0]?.message?.content ?? "I'm having trouble thinking about that right now. Please try again.";
   } catch (error) {
     console.error("Error generating response:", error);
     return "I'm having trouble connecting right now. Please try again.";

@@ -25,7 +25,7 @@ export default async function UsersPage() {
         <TypographyH2>Users</TypographyH2>
       </div>
       <Separator className="my-4" />
-      <UserList profiles={profiles || []} />
+      <UserList profiles={profiles ?? []} />
     </>
   );
 }

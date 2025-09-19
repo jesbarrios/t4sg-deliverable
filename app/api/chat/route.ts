@@ -1,10 +1,13 @@
 import { generateResponse } from "@/lib/services/species-chat";
 import { NextResponse } from "next/server";
 
+interface ChatRequestBody {
+  message: string;
+}
+
 export async function POST(request: Request) {
   try {
-    // Parse and validate request body
-    const body = await request.json();
+    const body = await request.json() as ChatRequestBody;
     if (!body?.message || typeof body.message !== "string") {
       return NextResponse.json(
         { error: "Invalid request. Message is required and must be a string." },

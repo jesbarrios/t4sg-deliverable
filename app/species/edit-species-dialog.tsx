@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -62,28 +61,25 @@ export default function EditSpeciesDialog({
   trigger: React.ReactNode;
   userId: string;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const form = useForm<FormData>({
+    resolver: zodResolver(speciesSchema),
+    defaultValues: {
+      scientific_name: species.scientific_name,
+      common_name: species.common_name,
+      kingdom: species.kingdom,
+      total_population: species.total_population,
+      endangered: species.endangered,
+      image: species.image,
+      description: species.description,
+    },
+    mode: "onChange",
+  });
+
   if (species.author !== userId) {
     return null;
   }
-
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-
-  const defaultValues: Partial<FormData> = {
-    scientific_name: species.scientific_name,
-    common_name: species.common_name,
-    kingdom: species.kingdom,
-    total_population: species.total_population,
-    endangered: species.endangered,
-    image: species.image,
-    description: species.description,
-  };
-
-  const form = useForm<FormData>({
-    resolver: zodResolver(speciesSchema),
-    defaultValues,
-    mode: "onChange",
-  });
 
   const onSubmit = async (data: FormData) => {
     const supabase = createBrowserSupabaseClient();
@@ -302,7 +298,7 @@ export default function EditSpeciesDialog({
                 <Button
                   type="button"
                   variant="destructive"
-                  onClick={handleDelete}
+                  onClick={() => void handleDelete()}
                 >
                   Delete
                 </Button>

@@ -38,7 +38,7 @@ export default async function SpeciesPage() {
         <AddSpeciesDialog userId={sessionId} />
       </div>
       <Separator className="my-4" />
-      <SpeciesList species={species || []} userId={sessionId} />
+      <SpeciesList species={species ?? []} userId={sessionId} />
     </>
   );
 }
